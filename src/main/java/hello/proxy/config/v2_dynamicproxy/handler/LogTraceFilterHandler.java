@@ -25,7 +25,7 @@ public class LogTraceFilterHandler implements InvocationHandler {
         //메서드 이름 필터
         String methodName = method.getName();
         if (!PatternMatchUtils.simpleMatch(patterns, methodName)) {
-            return method.invoke(target, args);
+            return method.invoke(target, args); // 패턴과 매칭이 되지 않으면 logtrace를 실행하지 않아서 로그를 안찍고 바로 실제를 호출한다.
         }
 
         TraceStatus status = null;

@@ -21,6 +21,7 @@ public class LogTraceBasicHandler implements InvocationHandler {
 
         TraceStatus status = null;
         try {
+            // method.getDeclaringClass().getSimpleName() 로 메서드의 메타정보를 가져올수있음.  이 메서드를 선언한 클래스정보를 simpleName으로 가져온다.
             String message = method.getDeclaringClass().getSimpleName() + "." +
                     method.getName() + "()";
             status = logTrace.begin(message);

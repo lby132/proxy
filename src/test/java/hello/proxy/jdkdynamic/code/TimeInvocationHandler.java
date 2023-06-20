@@ -19,7 +19,7 @@ public class TimeInvocationHandler implements InvocationHandler {
         log.info("TimeProxy 실행");
         long startTime = System.currentTimeMillis();
 
-        Object result = method.invoke(target, args);
+        Object result = method.invoke(target, args); //리플렉션을 사용해서 target인스턴스의 메서드를 실행한다. args는 메서드 호출시 넘겨줄 인자이다.
 
         long endTime = System.currentTimeMillis();
         long resultTime = endTime - startTime;

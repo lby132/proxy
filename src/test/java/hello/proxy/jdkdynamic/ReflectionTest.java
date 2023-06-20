@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
 
 @Slf4j
 public class ReflectionTest {
-
     @Test
     void reflection0() {
         Hello target = new Hello();
@@ -29,12 +28,12 @@ public class ReflectionTest {
     @Test
     void reflection1() throws Exception {
         //클래스 정보
-        Class classHello = Class.forName("hello.proxy.jdkdynamic.ReflectionTest$Hello");
+        Class classHello = Class.forName("hello.proxy.jdkdynamic.ReflectionTest$Hello"); //클래스의 메타정보를 획득할때 사용하는데 내부 클래스는 구분을 위해 $를 넣어준다.
 
         Hello target = new Hello();
         //callA 메서드 정보
         Method methodCallA = classHello.getMethod("callA");
-        Object result1 = methodCallA.invoke(target);
+        Object result1 = methodCallA.invoke(target); //여기서 invoke를 호출 하면 실제 target인스턴스의(new Hello()) callA메서드를 호출한다.
         log.info("result1={}", result1);
 
         //callB 메서드 정보
@@ -58,7 +57,7 @@ public class ReflectionTest {
 
     private void dynamicCall(Method method, Object target) throws Exception {
         log.info("start");
-        Object result = method.invoke(target);
+        Object result = method.invoke(target); //method.invoke(target)을 사용할때 호출할 메서드가 클래스 안에 있는 메서드여야한다.아니면 예외를 발생한다.
         log.info("result={}", result);
     }
 
