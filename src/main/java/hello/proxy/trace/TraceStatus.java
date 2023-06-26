@@ -1,5 +1,8 @@
 package hello.proxy.trace;
 
+import lombok.ToString;
+
+@ToString
 public class TraceStatus {
 
     private TraceId traceId;
